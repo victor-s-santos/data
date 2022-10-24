@@ -1,17 +1,17 @@
 version: "3.8"
 
 services:
-  clickhouse_db:
-    image: yandex/clickhouse-server
-    expose:
-      - "28123"
-      - "9000"
+  postgres_db:
+    image: postgres:13
     ports:
-      - "28123:8123"
-      - "9000:9000"
+      - 5432:5432
+    env_file:
+      - .env_postgres
+
+    
   mongo_db:
     image: mongo
     ports:  
       - "27017:27017"
     env_file:
-      - .env
+      - .env_mongo
